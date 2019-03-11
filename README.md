@@ -167,4 +167,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * Thanks to [ffMathy](https://github.com/ffMathy) from whose [Substitute](https://github.com/ffMathy/FluffySpoon.JavaScript.Testing.Faking) project I borrowed (with permission) some advanced Typescript types.
-* Special thanks to Ben Grynhaus for helping me muddle through some of the more complicated aspects of advanced Typescript types.
+* Special thanks to [Ben Grynhaus](https://github.com/bengry) for helping me muddle through some of the more complicated aspects of advanced Typescript types.
