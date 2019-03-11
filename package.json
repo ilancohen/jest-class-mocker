@@ -1,6 +1,6 @@
 {
   "name": "jest-class-mocker",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Jest mocks for unit tests for Typescript classes",
   "main": "src/index.ts",
   "types": "src/index.d.ts",

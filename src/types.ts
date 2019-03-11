@@ -17,7 +17,7 @@ type FunctionSubstitute<TArguments extends any[], TReturnType> =
 
 type PropertySubstitute<TReturnType> = (TReturnType & Partial<NoArgumentMockObjectMixin<TReturnType>>);
 
-export type MockOf<T extends Object> = {
+export type MockOf<T extends object> = {
   [P in keyof T]:
   T[P] extends () => infer R ? NoArgumentFunctionSubstitute<R> :
     T[P] extends (...args: infer F) => infer R ? FunctionSubstitute<F, R> :

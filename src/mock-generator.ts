@@ -13,7 +13,7 @@ type ConstructorMap<T extends string, U> = {
  * @param {ClassConstructor<ClassToMock>} constructor -
  * @returns {MockOf<ClassToMock>}
  */
-export function generateMockInstance<ClassToMock>(constructor: ClassConstructor<ClassToMock>): MockOf<ClassToMock> {
+export function generateMockInstance<ClassToMock extends object>(constructor: ClassConstructor<ClassToMock>): MockOf<ClassToMock> {
 	const mock: MockOf<ClassToMock> = <MockOf<ClassToMock>>{};
 	const functionNames: string[] = Object.getOwnPropertyNames(constructor.prototype);
 	functionNames.forEach((functionName: string) => {
