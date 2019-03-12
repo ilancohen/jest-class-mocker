@@ -31,7 +31,7 @@ All you need to do is install the package (see below) and ```import```
 
 ### Prerequisites
 
-####Jest
+#### Jest
 
 This project uses [Jest](https://jestjs.io/) for its [mock functions](https://jestjs.io/docs/en/mock-function-api).
 Technically, you can use it in a project using a different testing framework, but it is not intended for such.
@@ -57,20 +57,20 @@ Then use these functions as per the API below.
 #### generateMockInstance\<ClassTypeToMock\>(ClassConstructor) ⇒ <code>mockedClassInstance</code>
 This function takes a class constructor and returns a type-safe mocked class instance with all of the instance methods of that class.
 
-Use the generic type syntax <code>\<ClassTypeToMock\></code> (see the example below) to ensure a fully type-safe return value.
+Use the generic type syntax `<ClassTypeToMock>` (see the example below) to ensure a fully type-safe return value.
 
-###### Parameters:
+##### Parameters:
 
 | Param  | Type                | Description  |
 | ------ | ------------------- | ------------ |
-| ClassConstructor  | <code>constructor function</code> | the function that is used with <code>new</code> |
+| ClassConstructor  | `constructor function` | the function that is used with `new` |
 
-###### Return Value:
-<code>MockOf\<ClassToMock\></code>
+##### Return Value:
+`MockOf<ClassTypeToMock>`
 
 This is a type defined by the package. It includes all of the methods and properties of a normal class instance of `ClassToMock`, plus the `mockReset` function which resets all of the mocked functions.
 
-###### Example:
+##### Example:
 ```typescript
 class ClassA {
     property1 = 1;
@@ -101,7 +101,7 @@ This function takes a class constructor and its dependency class constructor and
 plus mock instances (using `generateMockInstance`) with all of the instance methods of that class.
 It also returns a convenience method for resetting all functions in all dependencies.
 
-###### Parameters:
+##### Parameters:
 
 
 | Param  | Type                | Description  |
@@ -110,14 +110,14 @@ It also returns a convenience method for resetting all functions in all dependen
 | dependencyClasses  | <code>object literal of constructor functions</code> | Class constructor in an object literal, using the class name as the key. See the example below. |
 
 
-###### Return Values (in the returned object literal):
+##### Return Values (in the returned object literal):
 | Param  | Type                | Description  |
 | ------ | ------------------- | ------------ |
 | classInstance  | instance of <code>ClassToInstantiate</code> | A new instance of <code>ClassToInstantiate</code>, using mocked instances for its dependencies. |
 | dependencies  | <code>object literal containing mocks of all passed dependencies</code> | The mocked instances used to create <code>classInstance</code>
 | resetAllMocks  | <code>() => void</code> | A convenience function, equivalent to calling <code>mockReset()</code> on each of the dependencies.
 
-###### Example:
+##### Example:
 ```typescript
 class ClassA {
     function1(): string {
