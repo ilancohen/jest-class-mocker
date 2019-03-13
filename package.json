@@ -1,6 +1,6 @@
 {
   "name": "jest-class-mocker",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Jest mocks for unit tests for Typescript classes",
   "main": "src/index.ts",
   "types": "src/index.d.ts",
@@ -11,7 +11,7 @@
   "scripts": {
     "test": "jest"
   },
-  "keywords": [],
+  "keywords": ["javascript","typescript","tests","testing","mock","fake","stub","class"],
   "author": "Ilan Cohen <sanity@gmail.com>",
   "license": "MIT",
   "devDependencies": {
