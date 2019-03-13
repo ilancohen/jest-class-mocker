@@ -88,7 +88,7 @@ Use the generic type syntax `<ClassTypeToMock>` (see the example below) to ensur
 >expect(retVal).toEqual('mockRetVal');
 >```
 >
->Note: This only creates mock instance _methods_. While the instance _properties_ of the class are part of the TypeScript type definition, their values will be `undefined` during runtime unless set explicitly:
+>**Note**: This only creates mock instance _methods_. While the instance _properties_ of the class are part of the TypeScript type definition, their values will be `undefined` during runtime unless set explicitly:
 >
 >```typescript
 >const classAMock = generateMockInstance<ClassA>(ClassA);
@@ -111,7 +111,7 @@ It also returns a convenience method for resetting all functions in all dependen
 >| Param  | Type                | Description  |
 >| ------ | ------------------- | ------------ |
 >| ClassToInstantiate  | <code>constructor function</code> | the function that is used with <code>new</code> to create the class you want to instantiate. |
->| dependencyClasses  | <code>object literal of constructor functions</code> | Class constructor in an object literal, using the class name as the key. See the example below. |
+>| dependencies  | <code>object literal of constructor functions OR values to use for dependencies</code> | Class constructor in an object literal, using the class name as the key. See the example below. |
 >
 >
 >##### Return Values (in the returned object literal):
@@ -121,6 +121,13 @@ It also returns a convenience method for resetting all functions in all dependen
 >| dependencies  | <code>object literal containing mocks of all passed dependencies</code> | The mocked instances used to create <code>classInstance</code>
 >| resetAllMocks  | <code>() => void</code> | A convenience function, equivalent to calling <code>mockReset()</code> on each of the dependencies.
 >
+
+**Important Note:**
+
+This function relies on Object keys being **ordered**, and therefore, the dependencies **must** be passed in the order
+that the class expects to receive them as parameters.
+
+
 >##### Example:
 >```typescript
 >class ClassA {
@@ -137,6 +144,7 @@ It also returns a convenience method for resetting all functions in all dependen
 >
 >class ClassC {
 >    constructor(
+>        private name: 'abc',
 >        private classA: ClassA,
 >        private classB: ClassB
 >    ) {}
@@ -146,7 +154,7 @@ It also returns a convenience method for resetting all functions in all dependen
 >    }
 >}
 >
->const {classInstance, dependencies, resetAllMocks} = instantiateWithMocks(ClassC, {ClassA, ClassB});
+>const {classInstance, dependencies, resetAllMocks} = instantiateWithMocks(ClassC, {name: 'abc', ClassA, ClassB});
 >expect(dependencies.ClassA).toBeDefined();
 >expect(dependencies.ClassB).toBeDefined();
 >
